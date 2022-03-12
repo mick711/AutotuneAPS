@@ -77,7 +77,7 @@
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
                 android:title="@string/openapssmb_dynisf_aggressivity"
-                validate:floatmaxNumber="2.0"
+                validate:floatmaxNumber="1.0"
                 validate:floatminNumber="0.0"
                 validate:testType="floatNumericRange" />
         </androidx.preference.PreferenceScreen>
