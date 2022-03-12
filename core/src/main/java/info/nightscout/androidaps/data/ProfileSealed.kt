@@ -26,6 +26,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.text.DecimalFormat
 import java.util.*
+import kotlin.math.log10
+import kotlin.math.pow
 
 sealed class ProfileSealed(
     val id: Long,
@@ -225,7 +227,9 @@ sealed class ProfileSealed(
     override fun getIc(): Double = icBlocks.blockValueBySeconds(secondsFromMidnight(), 100.0 / percentage, timeshift)
     override fun getIc(timestamp: Long): Double = icBlocks.blockValueBySeconds(secondsFromMidnight(timestamp), 100.0 / percentage, timeshift)
     override fun getIsfMgdl(): Double = toMgdl(isfBlocks.blockValueBySeconds(secondsFromMidnight(), 100.0 / percentage, timeshift), units)
+    override fun getIsfMgdl(bg: Double, aggressivity: Double): Double = toMgdl(isfBlocks.blockValueBySeconds(secondsFromMidnight(), 100.0 / percentage * dynISF(bg, aggressivity), timeshift), units)
     override fun getIsfMgdl(timestamp: Long): Double = toMgdl(isfBlocks.blockValueBySeconds(secondsFromMidnight(timestamp), 100.0 / percentage, timeshift), units)
+    override fun getIsfMgdl(timestamp: Long, bg: Double, aggressivity: Double): Double = toMgdl(isfBlocks.blockValueBySeconds(secondsFromMidnight(timestamp), 100.0 / percentage * dynISF(bg, aggressivity), timeshift), units)
     override fun getTargetMgdl(): Double = toMgdl(targetBlocks.targetBlockValueBySeconds(secondsFromMidnight(), timeshift), units)
     override fun getTargetLowMgdl(): Double = toMgdl(targetBlocks.lowTargetBlockValueBySeconds(secondsFromMidnight(), timeshift), units)
     override fun getTargetLowMgdl(timestamp: Long): Double = toMgdl(targetBlocks.lowTargetBlockValueBySeconds(secondsFromMidnight(timestamp), timeshift), units)
@@ -398,6 +402,8 @@ sealed class ProfileSealed(
                 elapsedSec += T.msecs(it.duration).secs().toInt()
             }
         }.toString()
+
+    private fun dynISF(bg: Double, aggressivity: Double): Double = 10.0.pow(aggressivity * log10(100.0/bg))
 
     fun isInProgress(dateUtil: DateUtil): Boolean =
         dateUtil.now() in timestamp..timestamp + (duration ?: 0L)

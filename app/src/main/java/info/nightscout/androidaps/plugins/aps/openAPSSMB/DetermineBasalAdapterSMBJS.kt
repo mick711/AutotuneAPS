@@ -177,7 +177,8 @@ class DetermineBasalAdapterSMBJS internal constructor(private val scriptReader: 
         this.profile.put("max_bg", maxBg)
         this.profile.put("target_bg", targetBg)
         this.profile.put("carb_ratio", profile.getIc())
-        this.profile.put("sens", profile.getIsfMgdl())
+        val aggressivity = sp.getDouble(R.string.key_openapssmb_dynisf_aggressivity, 0.0)
+        this.profile.put("sens", profile.getIsfMgdl(glucoseStatus.glucose, aggressivity))
         this.profile.put("max_daily_safety_multiplier", sp.getInt(R.string.key_openapsama_max_daily_safety_multiplier, 3))
         this.profile.put("current_basal_safety_multiplier", sp.getDouble(R.string.key_openapsama_current_basal_safety_multiplier, 4.0))
 

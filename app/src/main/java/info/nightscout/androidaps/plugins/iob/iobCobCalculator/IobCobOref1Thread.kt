@@ -120,7 +120,8 @@ class IobCobOref1Thread internal constructor(
                     continue  // profile not set yet
                 }
                 aapsLogger.debug(LTag.AUTOSENS, "Processing calculation thread: " + from + " (" + i + "/" + bucketedData.size + ")")
-                val sens = profile.getIsfMgdl(bgTime)
+                val aggressivity = sp.getDouble(R.string.key_openapssmb_dynisf_aggressivity, 0.0)
+                val sens = profile.getIsfMgdl(bgTime, bucketedData[i].value, aggressivity)
                 val autosensData = AutosensData(injector)
                 autosensData.time = bgTime
                 if (previous != null) autosensData.activeCarbsList = previous.cloneCarbsList() else autosensData.activeCarbsList = ArrayList()

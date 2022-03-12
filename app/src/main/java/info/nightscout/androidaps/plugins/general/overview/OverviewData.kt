@@ -629,6 +629,7 @@ class OverviewData @Inject constructor(
         maxFromMinValueFound = Double.MIN_VALUE
 
         val adsData = iobCobCalculator.ads.clone()
+        val aggressivity = sp.getDouble(R.string.key_openapssmb_dynisf_aggressivity, 0.0)
 
         while (time <= toTime) {
             val profile = profileFunction.getProfile(time)

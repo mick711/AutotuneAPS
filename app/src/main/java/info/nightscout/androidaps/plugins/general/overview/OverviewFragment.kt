@@ -676,8 +676,18 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
             val request = loop.lastRun?.request
             if (request is DetermineBasalResultSMB) {
                 val isfMgdl = profileFunction.getProfile()?.getIsfMgdl()
+                val aggressivity = sp.getDouble(R.string.key_openapssmb_dynisf_aggressivity, 0.0)
+                val isfDyn = overviewData.lastBg?.let { profileFunction.getProfile()?.getIsfMgdl(it.value, aggressivity) } ?:isfMgdl
                 val variableSens = request.variableSens
-                if (variableSens != isfMgdl && variableSens != null && isfMgdl != null) {
+                if (aggressivity > 0.0 && isfDyn != null && isfMgdl != null) {
+                    binding.infoLayout.variableSensitivity.text =
+                        String.format(
+                            Locale.getDefault(), "%1$.1f→%2$.1f",
+                            Profile.toUnits(isfMgdl, isfMgdl * Constants.MGDL_TO_MMOLL, profileFunction.getUnits()),
+                            Profile.toUnits(isfDyn, isfDyn * Constants.MGDL_TO_MMOLL, profileFunction.getUnits())
+                        )
+                    binding.infoLayout.variableSensitivity.visibility = View.VISIBLE
+                } else if (variableSens != isfMgdl && variableSens != null && isfMgdl != null) {
                     binding.infoLayout.variableSensitivity.text =
                         String.format(
                             Locale.getDefault(), "%1$.1f→%2$.1f",

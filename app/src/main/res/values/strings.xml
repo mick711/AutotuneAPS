@@ -350,6 +350,7 @@
     <string name="openapsama_current_basal_safety_multiplier_summary">Default value: 4 This is the other half of the key OpenAPS safety caps, and the other half of “3x max daily; 4x current” of the safety caps. This means your basal, regardless of max basal set on your pump, cannot be any higher than this number times the current level of your basal. This is to prevent people from getting into dangerous territory by setting excessively high max basals before understanding how the algorithm works. Again, the default is 4x; most people will never need to adjust this and are instead more likely to need to adjust other settings if they feel like they are “running into” this safety cap.</string>
     <string name="openapsama_autosens_max_summary">Default value: 1.2\nThis is a multiplier cap for autosens (and soon autotune) to set a 20%% max limit on how high the autosens ratio can be, which in turn determines how high autosens can adjust basals, how low it can adjust ISF, and how low it can set the BG target.</string>
     <string name="openapsama_autosens_min_summary">Default value: 0.7\nThe other side of the autosens safety limits, putting a cap on how low autosens can adjust basals, and how high it can adjust ISF and BG targets.</string>
+    <string name="openapssmb_dynisf_aggressivity_summary">Default value: 0.0\nIf above 0.0, Isf value will be reduced (more aggresive) at higher BG value.</string>
     <string name="openapsama_autosens_adjusttargets">Autosens adjust targets, too</string>
     <string name="openapsama_autosens_adjusttargets_summary">Default value: true\nThis is used to allow autosens to adjust BG targets, in addition to ISF and basals.</string>
     <string name="openapsama_bolussnooze_dia_divisor_summary">Default value: 2\nBolus snooze is enacted after you do a meal bolus, so the loop won’t counteract with low temps when you’ve just eaten. The example here and default is 2; so a 3 hour DIA means that bolus snooze will be gradually phased out over 1.5 hours (3DIA/2).</string>
@@ -760,6 +761,7 @@
     <string name="key_always_use_shortavg" translatable="false">always_use_shortavg</string>
     <string name="openapsama_autosens_max">Max autosens ratio</string>
     <string name="openapsama_autosens_min">Min autosens ratio</string>
+    <string name="openapssmb_dynisf_aggressivity">DynISF Ratio</string>
     <string name="openapsama_bolussnooze_dia_divisor">Bolus snooze dia divisor</string>
     <string name="openapsama_max_daily_safety_multiplier">Max daily safety multiplier</string>
     <string name="openapsama_current_basal_safety_multiplier">Current basal safety multiplier</string>

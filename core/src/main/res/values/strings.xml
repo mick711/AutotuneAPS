@@ -31,6 +31,7 @@
     <string name="key_show_notes_entry_dialogs" translatable="false">show_notes_entry_dialogs</string>
     <string name="key_openapsama_autosens_max" translatable="false">autosens_max</string>
     <string name="key_openapsama_autosens_min" translatable="false">autosens_min</string>
+    <string name="key_openapssmb_dynisf_aggressivity" translatable="false">dynisf_aggressivity</string>
     <string name="key_treatmentssafety_maxcarbs" translatable="false">treatmentssafety_maxcarbs</string>
     <string name="key_bgsource_upload_settings" translatable="false">bgsource_upload_settings</string>
     <string name="key_localalert_settings" translatable="false">localalert_settings</string>

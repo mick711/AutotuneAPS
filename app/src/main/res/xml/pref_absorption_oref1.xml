@@ -66,6 +66,20 @@
                 validate:floatminNumber="0.1"
                 validate:testType="floatNumericRange" />
 
+
+            <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+                android:defaultValue="0.0"
+                android:dialogMessage="@string/openapssmb_dynisf_aggressivity_summary"
+                android:digits="0123456789.,"
+                android:inputType="numberDecimal"
+                android:key="@string/key_openapssmb_dynisf_aggressivity"
+                android:maxLines="20"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:title="@string/openapssmb_dynisf_aggressivity"
+                validate:floatmaxNumber="2.0"
+                validate:floatminNumber="0.0"
+                validate:testType="floatNumericRange" />
         </androidx.preference.PreferenceScreen>
 
     </PreferenceCategory>
