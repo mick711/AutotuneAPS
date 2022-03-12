@@ -184,7 +184,8 @@ class BolusWizard @Inject constructor(
         this.totalPercentage = totalPercentage
 
         // Insulin from BG
-        sens = Profile.fromMgdlToUnits(profile.getIsfMgdl(), profileFunction.getUnits())
+        val aggressivity = sp.getDouble(R.string.key_openapssmb_dynisf_aggressivity, 0.0)
+        sens = Profile.fromMgdlToUnits(profile.getIsfMgdl(bg, aggressivity), profileFunction.getUnits())
         targetBGLow = Profile.fromMgdlToUnits(profile.getTargetLowMgdl(), profileFunction.getUnits())
         targetBGHigh = Profile.fromMgdlToUnits(profile.getTargetHighMgdl(), profileFunction.getUnits())
         if (useTT && tempTarget != null) {
